@@ -93,4 +93,14 @@ class Result
         return $this->messages=$messages;
     }
 
+    public function findMessage($message):Bool{
+
+        foreach ($this->messages as $messageInstance) {
+          if($message==$messageInstance->getCodeMessage()){
+            return true;
+          }
+        }
+        return false;
+    }
+
 }
