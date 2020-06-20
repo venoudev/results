@@ -1,6 +1,6 @@
 <?php
 
-namespace Venoudev\Results\Resources;
+namespace Venoudev\Results\ApiJsonResources;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
