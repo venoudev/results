@@ -12,7 +12,7 @@ A awesome package for send messages beetwen class in your Laravel proyect
 
 ### Installation of resources
 
-  #### install resources for the package and gives an awesome message:
+  #### install resources of the package and gives an awesome message:
 
   ```
    php artisan results:install-resources
