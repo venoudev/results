@@ -28,11 +28,11 @@
         "laravel": {
             "providers": [
                 "Venoudev\\Results\\ResultsServiceProvider"
-            ]
+            ], 
+            "aliases": {
+                "ResultManager": "Venoudev\\Results\\Facades\\ResultManagerFacade"
+            }
         }
-    }, 
-    "aliases": {
-        "ResultManager": "Venoudev\\Results\\Facades\\ResultManagerFacade"
     },
     "minimum-stability": "dev",
     "license": "MIT"
