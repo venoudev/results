@@ -23,18 +23,41 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
   ```
     php artisan vendor:publish --tag=results-resources
   ```
+  
+### Configure Facade ResultManager
+
+  in your app/config/app.php add this code in aliases array:
+  
+  ```
+    'aliases' => [
+
+        'App' => Illuminate\Support\Facades\App::class,
+        'Arr' => Illuminate\Support\Arr::class,
+        'Artisan' => Illuminate\Support\Facades\Artisan::class,
+         
+         //.... more alisases
+
+        /*
+        * Custom Aliases
+        */
+
+        'ResultManager' => Venoudev\Results\Facades\ResultManagerFacade::class,
+    ],
+    
+  ```
+  
 ## Json response structure of Venoudev/Results
 
 
 ```json
 {
-    "success": bool,
+    "success": "bool",
     "description": "string",
-    "data": { JsonObject } || { JsonArrayObject[] },
+    "data": { "dynamic" },
     "errors": [
         {
             "error_code": "[CODE]",
-            "field": "[field]" || "[NOTHING]",
+            "field": "[field] || [NOTHING]",
             "message": "string"
         }
     ],
