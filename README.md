@@ -23,6 +23,71 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
   ```
     php artisan vendor:publish --tag=results-resources
   ```
+# Example
+
+## API Docs
+
+<larecipe-card shadow>
+    Welcome to the Venoudev API Rest Base Documentation
+</larecipe-card>
+
+
+|Json Response Structure|
+|:-|
+
+```json
+{
+    "success": bool ,
+    "description": "string",
+    "data": { JsonObject } || { JsonArrayObject[] },
+    "errors": [
+        {
+            "error_code": "[CODE]",
+            "field": "[field]" || "[NOTHING]",
+            "message": "string"
+        }
+    ],
+    "messages": [
+        {
+            "message_code": "[CODE]",
+            "message": "string"
+        }
+    ]
+}
+```
+
+## ErrorMessage
+
+#### Example
+```json
+    {
+        "message_code": "[LOGIN_SUCCESS]",
+        "message": "Login do correctly"
+    }
+
+```
+
+## ErrorObject
+
+#### Example
+```json
+
+    {
+        "error_code": "[ERR_REQUIRED]",
+        "field": "[email]",
+        "message": "The email field is required."
+    }
+
+```
+```json
+
+    {
+        "error_code": "[ERR_STATUS_USER]",
+        "field": "[NOTHING]",
+        "message": "The status of user is baned."
+    }
+
+```
 
 ## Website 
   https://venoudev.com 
