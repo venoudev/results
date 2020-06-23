@@ -15,7 +15,7 @@ class ErrorResource extends Resource
     public function toArray($request)
     {
       return [
-        'code_message'=> $this->getCodeMessage(),
+        'error_code'=> $this->getCodeMessage(),
         'field' => $this->getField(),
         'message' => $this->getMessage(),
       ];
