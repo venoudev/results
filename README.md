@@ -28,9 +28,9 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 
 ```json
 {
-    "success": bool,
+    "success": true,
     "description": "string",
-    "data": { JsonObject } || { JsonArrayObject[] },
+    "data": { "dynamic" },
     "errors": [
         {
             "error_code": "[CODE]",
