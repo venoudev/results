@@ -115,7 +115,7 @@ return [
     'timezone' => 'The :attribute must be a valid zone.',
     'unique' => '[ERR_UNIQUE] # [:attribute] # The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute format is invalid.',
+    'url' => '[ERR_REQUIRED_WITHOUT_ALL] # [:attribute] # format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
     /*

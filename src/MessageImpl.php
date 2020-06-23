@@ -2,7 +2,9 @@
 
 namespace Venoudev\Results;
 
-class Message
+use Venoudev\Results\Contracts\Message;
+
+class MessageImpl implements Message
 {
   protected $code_message;
   protected $message;
@@ -19,11 +21,11 @@ class Message
     $this->message=$dataArray[1];
   }
 
-  public function getCodeMessage(){
+  public function getCodeMessage():string{
     return $this->code_message;
   }
 
-  public function getMessage(){
+  public function getMessage():string{
     return $this->message;
   }
 }

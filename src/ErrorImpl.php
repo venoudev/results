@@ -2,11 +2,13 @@
 
 namespace Venoudev\Results;
 
-class Error
+use Venoudev\Results\Contracts\Error;
+
+class ErrorImpl implements Error
 {
-  protected $code_message;
-  protected $message;
-  protected $field;
+  protected String $code_message;
+  protected String $message;
+  protected String $field;
 
   public function __construct($value){
     $code_message='';
@@ -35,14 +37,14 @@ class Error
   public function strSpaceReplace($data){
     return str_replace(' ','_',$data);
   }
-  public function getCodeMessage(){
+  public function getCodeMessage():string{
     return $this->code_message;
   }
 
-  public function getMessage(){
+  public function getMessage():string{
     return $this->message;
   }
-  public function getField(){
+  public function getField():string{
     return $this->field;
   }
 
