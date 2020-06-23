@@ -28,7 +28,7 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 
 ```json
 {
-    "success": bool ,
+    "success": bool,
     "description": "string",
     "data": { JsonObject } || { JsonArrayObject[] },
     "errors": [
@@ -79,9 +79,6 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
     }
 
 ```
-
-## Website 
-  https://venoudev.com 
 
 ## Example 
 
@@ -160,4 +157,5 @@ Content
 }
 ```
 
-
+## Website 
+  https://venoudev.com 
