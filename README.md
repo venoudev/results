@@ -2,7 +2,7 @@
 </p>
 
 # VenouDev Results
-A awesome package for send messages beetwen class in your Laravel proyect
+A awesome package for send messages beetwen class in your Laravel proyect for your API Rest.
 
 ## Installation 
 
