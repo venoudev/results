@@ -28,13 +28,13 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 
 ```json
 {
-    "success": true,
+    "success": "bool",
     "description": "string",
     "data": { "dynamic" },
     "errors": [
         {
             "error_code": "[CODE]",
-            "field": "[field]" || "[NOTHING]",
+            "field": "[field] || [NOTHING]",
             "message": "string"
         }
     ],
