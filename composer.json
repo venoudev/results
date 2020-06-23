@@ -35,5 +35,5 @@
         "ResultManager": "Venoudev\\Results\\Facades\\ResultManagerFacade"
     },
     "minimum-stability": "dev",
-    "license": "MIT",
+    "license": "MIT"
 }
