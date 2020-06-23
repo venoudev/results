@@ -15,7 +15,7 @@ class MessageResource extends Resource
     public function toArray($request)
     {
         return [
-          'code_message'=> $this->getCodeMessage(),
+          'message_code'=> $this->getCodeMessage(),
           'message' => $this->getMessage(),
         ];
     }
