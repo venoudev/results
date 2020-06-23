@@ -5,7 +5,7 @@ namespace Venoudev\Results\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class ResultFacade extends Facade{
+class ResultManagerFacade extends Facade{
 
     protected static function getFacadeAccessor() { return 'manager'; }
 
