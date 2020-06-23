@@ -29,7 +29,7 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
   in your app/config/app.php add this code in aliases array:
   
   ```
-      'aliases' => [
+    'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
