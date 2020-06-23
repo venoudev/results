@@ -1,6 +1,6 @@
 {
     "name": "venoudev/results",
-    "description": "A package that gives awesome comunication in your Laravel Application",
+    "description": "A package that gives awesome comunication on classes in your Laravel Application and gives your Api Rest awesomes powers and a great structure",
     "authors": [
         {
             "name": "philipretl",
@@ -28,11 +28,12 @@
         "laravel": {
             "providers": [
                 "Venoudev\\Results\\ResultsServiceProvider"
-            ]
+            ], 
+            "aliases": {
+                "ResultManager": "Venoudev\\Results\\Facades\\ResultManagerFacade"
+            }
         }
-    }, 
-    "aliases": {
-        "ResultManager": "Venoudev\\Results\\Facades\\ResultManagerFacade"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "license": "MIT"
 }
