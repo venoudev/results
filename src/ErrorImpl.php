@@ -6,39 +6,61 @@ use Venoudev\Results\Contracts\Error;
 
 class ErrorImpl implements Error
 {
-  protected String $code_message;
+  protected String $errorCode;
   protected String $message;
   protected String $field;
 
-  public function __construct($value){
-    $code_message='';
-    $message='';
-    $field='';
-    $this->divide($value);
+
+  public function __construct(){
+      $a = func_get_args();
+      $i = func_num_args();
+      if (method_exists($this,$f='__construct'.$i)) {
+          call_user_func_array(array($this,$f),$a);
+      }
+
+  }
+
+  public function __construct1($errorField)
+  {
+      $errorCode='';
+      $message='';
+      $field='';
+      $this->divide($errorField);
+  }
+
+  public function __construct2($errorCode, $message)
+  {
+      $this->errorCode= strtoupper($errorCode);
+      $this->errorCode = $this->strSpaceReplace($this->erroCode);
+      $this->message=$message;
+      $this->field='NOTHING';
   }
 
   public function divide($data){
+    
     $dataArray=explode(' # ',$data);
-    //treated the data input for delete ' ' (space) and remplace for '_'
+
     switch (sizeof($dataArray)) {
       case 1:
-        $this->code_message='[NOTHING]';
-        $this->message=$dataArray[0];
-        $this->field='[NOTHING]';
+          $this->errorCode='[NOTHING]';
+          $this->message=$dataArray[0];
+          $this->field='[NOTHING]';
         break;
       default:
-        $this->code_message=$dataArray[0];
-        $treatedField= $this->strSpaceReplace($dataArray[1]);
-        $this->field=$treatedField;
-        $this->message=$dataArray[2];
+          $this->errorCode=strtoupper($dataArray[0]);
+          $treatedField= $this->strSpaceReplace($dataArray[1]);
+          $this->field=$treatedField;
+          $this->message=$dataArray[2];
         break;
     }
   }
+
   public function strSpaceReplace($data){
     return str_replace(' ','_',$data);
   }
+
   public function getCodeMessage():string{
-    return $this->code_message;
+    return $this->errorCode;
   }
 
   public function getMessage():string{
