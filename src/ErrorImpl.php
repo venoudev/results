@@ -30,7 +30,7 @@ class ErrorImpl implements Error
 
   public function __construct2($errorCode, $message)
   {
-      $this->errorCode= strtoupper($errorCode);
+      $this->errorCode = strtoupper($errorCode);
       $this->errorCode = $this->strSpaceReplace($this->erroCode);
       $this->message=$message;
       $this->field='NOTHING';
@@ -42,9 +42,9 @@ class ErrorImpl implements Error
 
     switch (sizeof($dataArray)) {
       case 1:
-          $this->errorCode='[NOTHING]';
+          $this->errorCode='NOTHING';
           $this->message=$dataArray[0];
-          $this->field='[NOTHING]';
+          $this->field='NOTHING';
         break;
       default:
           $this->errorCode=strtoupper($dataArray[0]);

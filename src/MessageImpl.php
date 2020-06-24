@@ -11,7 +11,7 @@ class MessageImpl implements Message
 
   public function __construct($messageCode, $message){
 
-    $this->messageCode= strtoupper($messageCode);
+    $this->messageCode = strtoupper($messageCode);
     $this->message = $message;
 
   }
