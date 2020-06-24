@@ -56,14 +56,14 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
     "data": { "dynamic" },
     "errors": [
         {
-            "error_code": "[CODE]",
-            "field": "[field] || [NOTHING]",
+            "error_code": "CODE",
+            "field": "field || NOTHING",
             "message": "string"
         }
     ],
     "messages": [
         {
-            "message_code": "[CODE]",
+            "message_code": "CODE",
             "message": "string"
         }
     ]
@@ -75,7 +75,7 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 #### Example
 ```json
     {
-        "message_code": "[LOGIN_SUCCESS]",
+        "message_code": "LOGIN_SUCCESS",
         "message": "Login do correctly"
     }
 
@@ -87,8 +87,8 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 ```json
 
     {
-        "error_code": "[ERR_REQUIRED]",
-        "field": "[email]",
+        "error_code": "ERR_REQUIRED",
+        "field": "email",
         "message": "The email field is required."
     }
 
@@ -96,8 +96,8 @@ A awesome package for send messages beetwen class in your Laravel proyect for yo
 ```json
 
     {
-        "error_code": "[ERR_STATUS_USER]",
-        "field": "[NOTHING]",
+        "error_code": "ERR_STATUS_USER",
+        "field": "NOTHING",
         "message": "The status of user is baned."
     }
 
@@ -122,7 +122,7 @@ Content
     "errors": [],
     "messages": [
         {
-            "message_code": "[LOGIN_SUCCESS]",
+            "message_code": "LOGIN_SUCCESS",
             "message": "login do correctly"
         }
     ]
@@ -142,7 +142,7 @@ Content
     "errors": [],
     "messages": [
         {
-            "message_code": "[FAILED_AUTH]",
+            "message_code": "FAILED_AUTH",
             "message": "Invalid login credential"
         }
     ]
@@ -161,19 +161,19 @@ Content
     "data": [],
     "errors": [
         {
-            "error_code": "[ERR_REQUIRED]",
-            "field": "[email]",
+            "error_code": "ERR_REQUIRED",
+            "field": "email",
             "message": "The email field is required."
         },
         {
-            "error_code": "[ERR_REQUIRED]",
-            "field": "[password]",
+            "error_code": "ERR_REQUIRED",
+            "field": "password",
             "message": "The password field is required."
         }
     ],
     "messages": [
         {
-            "message_code": "[CHECK_DATA]",
+            "message_code": "CHECK_DATA",
             "message": "The form has errors whit the inputs"
         }
     ]
