@@ -12,8 +12,8 @@ use Venoudev\Results\Contracts\Error;
 use Venoudev\Results\ErrorImpl;
 use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
-use Venoudev\Results\Contracts\Manager;
-use Venoudev\Results\ResultManager;
+use Venoudev\Results\Contracts\ResultManager;
+use Venoudev\Results\ResultManagerImpl;
 use App;
 
 class ResultsServiceProvider extends ServiceProvider
@@ -26,9 +26,10 @@ class ResultsServiceProvider extends ServiceProvider
     public function register()
     {   
 
-        App::bind('manager', function()
+        App::bind('resultManager', function()
         {   
-            return App::make('Venoudev\Results\Contracts\Manager');
+            //return App::make('Venoudev\Results\Contracts\ResultManager');
+            return App::make(ResultManager::class);
 
         });
 
@@ -52,7 +53,7 @@ class ResultsServiceProvider extends ServiceProvider
                 Commands\InstallResources::class,
             ]);
         }
-        $this->app->singleton(Manager::class, ResultManager::class);
+        $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);
         $this->app->bind(Error::class, ErrorImpl::class);

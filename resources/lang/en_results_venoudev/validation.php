@@ -20,7 +20,7 @@ return [
     'alpha' => 'The :attribute may only contain letters.',
     'alpha_dash' => 'The :attribute may only contain letters, numbers, dashes and underscores.',
     'alpha_num' => 'The :attribute may only contain letters and numbers.',
-    'array' => 'ERR_ARRAY # :attribute] The :attribute must be an array.',
+    'array' => 'ERR_ARRAY # :attribute The :attribute must be an array.',
     'before' => 'ERR_BEFORE_DATE # :attribute # The :attribute must be a date before :date.',
     'before_or_equal' => 'ERR_BEFORE_EQUAL_DATE # :attribute] The :attribute must be a date before or equal to :date.',
     'between' => [

@@ -5,22 +5,52 @@ namespace Venoudev\Results;
 use Venoudev\Results\Contracts\Result;
 use Venoudev\Results\ErrorImpl as Error;
 use Venoudev\Results\MessageImpl as Message;
+use Venoudev\Results\Traits\ApiResponser;
 
 class ResultImpl implements Result
-{
-    protected $status;
-    protected $data;
-    protected $messages;
-    protected $errors;
-    protected $code;
+{   
+    use ApiResponser;
+
+    protected array $data;
+    protected array $messages;
+    protected array $errors;
+    protected int $code;
+    protected string $description;
+    protected string $status;
  
     public function __construct(){
 
-        $this->data=array();
-        $this->errors=array();
-        $this->status='SUCCESS';
-        $this->messages=array();
+        $this->data = [];
+        $this->errors=[];
+        $this->messages=[];
+        $this->description='';
+        $this->status = 'SUCCESS';
     }
+
+    public function getDescription():string{
+        return $this->description;
+    }
+
+    public function setDescription(string $description=''):void{
+        $this->description= $description;
+    }
+
+    public function getStatus():string{
+        return $this->status;
+    }
+
+    public function setStatus(string $status='SUCCESS'):void{
+        $this->status = $status;
+    }
+
+    public function success():void{
+        $this->status = 'SUCCESS';
+    }
+    
+    public function fail():void{
+       $this->status = 'FAIL';
+    }
+
  
     public function setCode($code): void{
         $this->code = $code;
@@ -29,21 +59,20 @@ class ResultImpl implements Result
     public function getCode():int{
         return $this->code;
     }
-    
-    public function setStatus($status):void{
-        $this->status=strtoupper($status);
-    }
-
-    public function getStatus():string{
-        return $this->status;
-    }
 
     public function clearStatus():bool{
         $this->status='';
         return true;
     }
     
-    public function addDatum($key, $value):void{
+    /**
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function addDatum(string $key, $value):void{
+        $key = $this->prepareJsonCode($key);
         $this->data[$key]=$value;
     }
 
@@ -115,7 +144,7 @@ class ResultImpl implements Result
  
     public function addMessage($messageCode, $message):void{
         $message = new Message($messageCode, $message);
-    
+
         if (!(in_array($message,$this->messages))){
             array_push($this->messages,$message);
         }
@@ -163,8 +192,39 @@ class ResultImpl implements Result
         foreach ($filtered as $key) {
            $this->deleteDatum($key);
         }
-
         return;
+    }    
+
+   
+    public function getJsonResponse(){
+        if($this->status=='FAIL'){
+           return $this->errorJsonResponse();
+        }
+
+        return $this->successJsonResponse();
     }
+
+    public function successJsonResponse(){
+        return $this->successResponse(
+            $this->data,
+            $this->messages,
+            $this->code,
+            $this->description,
+        );
+    }
+
+    public function errorJsonResponse(){
+        return $this->errorResponse(
+            $this->errors,
+            $this->messages,
+            $this->code,
+            $this->description,
+        );
+    }
+
+    public function prepareJsonCode($data){
+        return strtolower(str_replace(' ','_',$data));
+    }
+    
 
  }

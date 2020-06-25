@@ -37,7 +37,7 @@ class ErrorImpl implements Error
   }
 
   public function divide($data){
-    
+
     $dataArray=explode(' # ',$data);
 
     switch (sizeof($dataArray)) {
