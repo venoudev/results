@@ -2,7 +2,7 @@
 </p>
 
 # VenouDev Results
-A awesome package for construct an awesome Json Structure in your Laravel proyect for your API Rest.
+An awesome package for construct a very understandable Json structure response in your Laravel proyect for your API Rest.
 
 ## Installation 
 
