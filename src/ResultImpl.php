@@ -25,6 +25,7 @@ class ResultImpl implements Result
         $this->messages=[];
         $this->description='';
         $this->status = 'SUCCESS';
+        $this->code = 200;
     }
 
     public function getDescription():string{
