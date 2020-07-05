@@ -14,6 +14,7 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
+use App;
 
 class LumenResultsServiceProvider extends ServiceProvider
 {
@@ -25,13 +26,14 @@ class LumenResultsServiceProvider extends ServiceProvider
     public function register()
     {   
 
-        $this->app->bind('resultManager', function()
+        App::bind('resultManager', function()
         {   
-            return new ResultManager();
+            return App::make(ResultManager::class);
 
         });
 
         $this->registerCollectionPaginated();
+
     }
 
     /**
@@ -40,7 +42,7 @@ class LumenResultsServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {    
+    {   
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);

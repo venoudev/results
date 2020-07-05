@@ -6,7 +6,7 @@ use Venoudev\Results\Contracts\Error;
 
 class ErrorImpl implements Error
 {
-  protected String $errorCode;
+  protected String $error_code;
   protected String $message;
   protected String $field;
 
@@ -20,37 +20,37 @@ class ErrorImpl implements Error
 
   }
 
-  public function __construct1($errorField)
+  public function __construct1($error_field)
   {
-      $errorCode='';
+      $error_code='';
       $message='';
       $field='';
-      $this->divide($errorField);
+      $this->divide($error_field);
   }
 
-  public function __construct2($errorCode, $message)
+  public function __construct2($error_code, $message)
   {
-      $this->errorCode = strtoupper($errorCode);
-      $this->errorCode = $this->strSpaceReplace($this->erroCode);
+      $this->error_code = strtoupper($error_code);
+      $this->error_code = $this->strSpaceReplace($this->error_code);
       $this->message=$message;
       $this->field='NOTHING';
   }
 
   public function divide($data){
 
-    $dataArray=explode(' # ',$data);
+    $data_array=explode(' # ',$data);
 
-    switch (sizeof($dataArray)) {
+    switch (sizeof($data_array)) {
       case 1:
-          $this->errorCode='NOTHING';
-          $this->message=$dataArray[0];
+          $this->error_code='NOTHING';
+          $this->message=$data_array[0];
           $this->field='NOTHING';
         break;
       default:
-          $this->errorCode=strtoupper($dataArray[0]);
-          $treatedField= $this->strSpaceReplace($dataArray[1]);
-          $this->field=$treatedField;
-          $this->message=$dataArray[2];
+          $this->error_code=strtoupper($data_array[0]);
+          $treated_field= $this->strSpaceReplace($data_array[1]);
+          $this->field=$treated_field;
+          $this->message=$data_array[2];
         break;
     }
   }
@@ -60,7 +60,7 @@ class ErrorImpl implements Error
   }
 
   public function getCodeMessage():string{
-    return $this->errorCode;
+    return $this->error_code;
   }
 
   public function getMessage():string{
