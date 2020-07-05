@@ -14,6 +14,7 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
+use Venoudev\Results\Commands\InstallResources;
 use App;
 
 class ResultsServiceProvider extends ServiceProvider
@@ -49,7 +50,7 @@ class ResultsServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Commands\InstallResources::class,
+                InstallResources::class,
             ]);
         }
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
