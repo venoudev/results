@@ -61,9 +61,8 @@ class ResultImpl implements Result
         return $this->code;
     }
 
-    public function clearStatus():bool{
+    public function clearStatus():void{
         $this->status='';
-        return true;
     }
     
     /**
@@ -81,9 +80,8 @@ class ResultImpl implements Result
         return $this->data[$key];
     }
 
-    public function deleteDatum($key):bool{
+    public function deleteDatum($key):void{
         unset($this->data[$key]);
-        return true;
     }
 
 
@@ -100,9 +98,8 @@ class ResultImpl implements Result
     }
  
     public function addFieldError($field_error):void{
-         $error = new Error($field_error);
-
-         array_push($this->errors, $error);
+        $error = new Error($field_error);
+        array_push($this->errors, $error);
     }
 
     public function addError($error_code, $message):void{
@@ -120,27 +117,32 @@ class ResultImpl implements Result
     }
  
     public function addFieldErrors($field_errors):void{
- 
+        if(empty($field_errors)){
+            return;
+        } 
         foreach ($field_errors->all() as $field_error) {
             $this->addFieldError($field_error);
         }
     }
 
     public function addErrors(array $errors):void{
- 
+        if(empty($errors)){
+            return;
+        } 
         foreach ($errors as $error) {
             $this->addError($error);
         }
     }
 
-    public function setErrors(array $errors):bool{
+    public function setErrors(array $errors):void{
+        if(empty($errors)){
+            return;
+        }    
         $this->errors = $errors;
-        return true;
     }
  
-    public function clearErrors():bool{
+    public function clearErrors():void{
         $this->errors=[];
-        return true;
     }
  
     public function addMessage($message_code, $message):void{
@@ -172,16 +174,20 @@ class ResultImpl implements Result
     }
 
     public function setMessages($messages):void{
+        if(empty($messages)){
+            return;
+        } 
         $this->messages=$messages;
     }
 
-    public function clearMessages():bool{
+    public function clearMessages():void{
         $this->messages=[];
-        return true;
     }
 
     public function clearDataExceptKeys($array_keys):void{
-    
+        if(empty($array_keys)){
+            return;
+        } 
         $temporary_keys_data = array_keys($this->data);
 
         $filtered = array_diff($temporary_keys_data, $array_keys );

@@ -79,9 +79,9 @@ interface Result {
     /**
      *
      * @param [type] $key
-     * @return boolean
+     * @return void
      */
-    public function deleteDatum($key):bool;
+    public function deleteDatum($key):void;
 
     /**
      *
@@ -154,15 +154,15 @@ interface Result {
     /**
      *
      * @param array $errors
-     * @return boolean
+     * @return void
      */
-    public function setErrors(array $errors):bool;
+    public function setErrors(array $errors):void;
     
     /**
      *
-     * @return boolean
+     * @return void
      */
-    public function clearErrors():bool;
+    public function clearErrors():void;
 
     /**
      * Add a message to result
@@ -185,7 +185,7 @@ interface Result {
      * Check if the result contains the message code
      *
      * @param string $messageCode
-     * @return boolean
+     * @return void
      */
     public function containsMessage($message_code):bool;
 
@@ -204,9 +204,9 @@ interface Result {
     
     /**
      *
-     * @return boolean
+     * @return void
      */
-    public function clearMessages():bool;
+    public function clearMessages():void;
 
  
     public function getJsonResponse();
