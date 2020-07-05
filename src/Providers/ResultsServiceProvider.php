@@ -1,6 +1,6 @@
 <?php
 
-namespace Venoudev\Results;
+namespace Venoudev\Results\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
