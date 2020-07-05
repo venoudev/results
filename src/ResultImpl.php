@@ -226,6 +226,5 @@ class ResultImpl implements Result
     public function prepareJsonCode($data){
         return strtolower(str_replace(' ','_',$data));
     }
-    
 
  }
