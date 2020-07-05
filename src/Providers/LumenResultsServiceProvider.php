@@ -14,6 +14,7 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
+use Venoudev\Results\Commands\LumenInstallResources;
 
 class LumenResultsServiceProvider extends ServiceProvider
 {
@@ -27,12 +28,11 @@ class LumenResultsServiceProvider extends ServiceProvider
 
         $this->app->bind('resultManager', function()
         {   
-            return new (ResultManager::class);
+            return new ResultManager();
 
         });
 
         $this->registerCollectionPaginated();
-
     }
 
     /**
@@ -41,22 +41,11 @@ class LumenResultsServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('/lang'),
-        ],'results-resources');
-
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Commands\InstallResources::class,
-            ]);
-        }
+    {    
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);
         $this->app->bind(Error::class, ErrorImpl::class);
-
-      
     }
 
     public function registerCollectionPaginated(){
