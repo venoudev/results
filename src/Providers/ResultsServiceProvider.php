@@ -1,6 +1,6 @@
 <?php
 
-namespace Venoudev\Results;
+namespace Venoudev\Results\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
@@ -28,7 +28,6 @@ class ResultsServiceProvider extends ServiceProvider
 
         App::bind('resultManager', function()
         {   
-            //return App::make('Venoudev\Results\Contracts\ResultManager');
             return App::make(ResultManager::class);
 
         });
