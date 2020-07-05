@@ -1,6 +1,6 @@
 {
     "name": "venoudev/results",
-    "description": "A package that gives awesome comunication on classes in your Laravel Application and gives your Api Rest awesomes powers and a great structure",
+    "description": "An awesome package for construct a very understandable Json structure response in your Laravel proyect for your API Rest.",
     "authors": [
         {
             "name": "philipretl",
@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-       "php": "^7.2.5",
+       "php": "^7.4",
        "illuminate/http": "^7.0",
        "illuminate/support": "^7.0",
        "illuminate/console": "^7.0"
