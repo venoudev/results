@@ -11,7 +11,21 @@ An awesome package for construct a very understandable Json structure response i
 ```
 
 ## Lumen 
-Lumen does not support the auto-discovery feature, you should manually add the provider.
+Lumen does not support the auto-discovery feature, you should manually add the provider. you need install this package
+
+https://github.com/laravelista/lumen-vendor-publish
+
+```
+  composer require laravelista/lumen-vendor-publish=^7.0
+```
+
+To be able to use it you have to add it to your app/Console/Kernel.php file:
+
+protected $commands = [
+    \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
+];
+
+later in bootstrap/app.php configure
 
 ```
   $app->register(Venoudev\Results\Providers\ResultsServiceProvider::class);
