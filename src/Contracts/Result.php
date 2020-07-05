@@ -107,14 +107,14 @@ interface Result {
      * @param array $arrayKeys
      * @return void
      */
-    public function clearDataExceptKeys($arrayKeys):void;
+    public function clearDataExceptKeys($array_keys):void;
 
     /**
      *
      * @param Error $fieldError
      * @return void
      */
-    public function addFieldError($fieldError):void;
+    public function addFieldError($field_error):void;
     
     /**
      *
@@ -122,7 +122,7 @@ interface Result {
      * @param [type] $message
      * @return void
      */
-    public function addError($errorCode, $message):void;
+    public function addError($error_code, $message):void;
     
     /**
      *
@@ -142,7 +142,7 @@ interface Result {
      * @param [type] $fieldErrors
      * @return void
      */
-    public function addFieldErrors($fieldErrors):void;
+    public function addFieldErrors($field_errors):void;
     
     /**
      *
@@ -171,7 +171,7 @@ interface Result {
      * @param string $message
      * @return void
      */
-    public function addMessage(string $messageCode, string $message):void;
+    public function addMessage(string $message_code, string $message):void;
     
     /**
      * get a messsage by your key
@@ -187,7 +187,7 @@ interface Result {
      * @param string $messageCode
      * @return boolean
      */
-    public function containsMessage($messageCode):bool;
+    public function containsMessage($message_code):bool;
 
     /**
      *
