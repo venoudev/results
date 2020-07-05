@@ -28,7 +28,6 @@ class ResultsServiceProvider extends ServiceProvider
 
         App::bind('resultManager', function()
         {   
-            //return App::make('Venoudev\Results\Contracts\ResultManager');
             return App::make(ResultManager::class);
 
         });

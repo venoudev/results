@@ -14,7 +14,6 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
-use Venoudev\Results\Commands\LumenInstallResources;
 
 class LumenResultsServiceProvider extends ServiceProvider
 {
