@@ -45,7 +45,13 @@ later in bootstrap/app.php configure
   ```
     php artisan vendor:publish --tag=results-resources
   ```
+  ### Install resources in Lumen 
   
+  ```
+    mkdir resources/lang
+    cp -R vendor/venoudev/results/resources/lang/en_results_venoudev resources/lang
+  ```
+
 ### Configure Facade ResultManager
 
   in your app/config/app.php add this code in aliases array:
