@@ -10,7 +10,7 @@ An awesome package for construct a very understandable Json structure response i
   composer require venoudev/results
 ```
 ### Lumen Register Provider
-configure bootstrap/app.php configure
+in your bootstrap/app.php file, configure
 
 ```
   /**
