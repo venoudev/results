@@ -10,6 +10,14 @@ An awesome package for construct a very understandable Json structure response i
   composer require venoudev/results
 ```
 
+## Lumen 
+Lumen does not support the auto-discovery feature, you should manually add the provider.
+
+```
+  $app->register(Venoudev\Results\Providers\ResultsServiceProvider::class);
+```
+
+
 ### Installation of resources
 
   #### install resources of the package and gives an awesome message:
