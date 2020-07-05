@@ -99,14 +99,14 @@ class ResultImpl implements Result
         $this->data = [];
     }
  
-    public function addFieldError($fieldError):void{
-         $error = new Error($fieldError);
+    public function addFieldError($field_error):void{
+         $error = new Error($field_error);
 
-         array_push($this->errors,$error);
+         array_push($this->errors, $error);
     }
 
-    public function addError($errorCode, $message):void{
-        $error = new Error($errorCode, $message);
+    public function addError($error_code, $message):void{
+        $error = new Error($error_code, $message);
         array_push($this->errors,$error);
     }
 
@@ -119,10 +119,10 @@ class ResultImpl implements Result
         return $this->errors;
     }
  
-    public function addFieldErrors($fieldErrors):void{
+    public function addFieldErrors($field_errors):void{
  
-        foreach ($fieldErrors->all() as $fieldError) {
-            $this->addFieldError($fieldError);
+        foreach ($field_errors->all() as $field_error) {
+            $this->addFieldError($field_error);
         }
     }
 
@@ -143,22 +143,22 @@ class ResultImpl implements Result
         return true;
     }
  
-    public function addMessage($messageCode, $message):void{
-        $message = new Message($messageCode, $message);
-
+    public function addMessage($message_code, $message):void{
+       
+        $message = new Message($message_code, $message);
         if (!(in_array($message,$this->messages))){
             array_push($this->messages,$message);
         }
     }
  
     public function getMessage($key):Message{
-    return $this->messages[$key];
+        return $this->messages[$key];
     }
 
-    public function containsMessage($messageCode):bool{
+    public function containsMessage($message_code):bool{
 
-        foreach ($this->messages as $messageInstance) {
-            if($messageCode == $messageInstance->getCodeMessage()){
+        foreach ($this->messages as $message_instance) {
+            if($message_code == $message_instance->getCodeMessage()){
                 return true;
             }
         }
@@ -180,11 +180,11 @@ class ResultImpl implements Result
         return true;
     }
 
-    public function clearDataExceptKeys($arrayKeys):void{
+    public function clearDataExceptKeys($array_keys):void{
     
-        $temporaryKeysData = array_keys($this->data);
+        $temporary_keys_data = array_keys($this->data);
 
-        $filtered = array_diff($temporaryKeysData, $arrayKeys );
+        $filtered = array_diff($temporary_keys_data, $array_keys );
         
         if(empty($filtered)){
             return;
