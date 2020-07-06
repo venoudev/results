@@ -4,7 +4,7 @@ namespace Venoudev\Results\ApiJsonResources;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
-class PaginateResource extends Resource
+class PaginatedResource extends Resource
 {
    protected $namePagination='paginated';
    /**
@@ -26,7 +26,7 @@ class PaginateResource extends Resource
       $array[$this->namePagination]=$array['data'];
       $this->array_unshift_assoc($array,$this->namePagination,$array[$this->namePagination]);
       unset($array['data']);
-      return [$array];
+      return $array;
     }
 
     function array_unshift_assoc(&$arr, $key, $val)
