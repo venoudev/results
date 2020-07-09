@@ -12,7 +12,7 @@ class UnauthorizedPassportException extends BaseException{
         parent::__construct($status, $code, $previous);
         $this->result->fail();
         $this->result->setCode(401);
-        $this->result->setDescription('Unauthorized passport token, please check your auth token');
-        $this->addMessage('UNAUTHORIZED','Your token is invalid');
+        $this->result->setDescription('Unauthorized passport token, please check your auth token.');
+        $this->addMessage('UNAUTHORIZED','Your token is invalid.');
     }
 }
