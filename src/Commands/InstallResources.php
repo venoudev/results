@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class InstallResources extends Command
 {
-    protected $signature = 'results:install-resources';
+    protected $signature = 'results:install:resources';
     protected $description = 'Install or Update langs resources for Venoudev/Results';
 
     public function handle()
