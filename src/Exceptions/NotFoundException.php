@@ -12,9 +12,9 @@ class NotFoundException extends BaseException{
 
         parent::__construct($status, $code, $previous);
         
-        $this->result = ResultManager::createResult();
         $this->result->fail();
         $this->result->setCode($code);
-        $this->result->setDescription('Resource not found, please check the errors or messages.');
+        $this->result->setDescription('Exist conflict with the request, please check the errors or messages.');
+        $this->addMessage('NOT_FOUND', 'Resource not found check your request data');
     }    
 }

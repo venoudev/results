@@ -14,6 +14,12 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
+
+use Venoudev\Results\Commands\ValidatorMakeCommand;
+use Venoudev\Results\Commands\ServiceImplMakeCommand;
+use Venoudev\Results\Commands\ServiceContractMakeCommand;
+use Venoudev\Results\Commands\ActionMakeCommand;
+
 use App;
 
 class LumenResultsServiceProvider extends ServiceProvider
@@ -43,6 +49,16 @@ class LumenResultsServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ValidatorMakeCommand::class,
+                ServiceImplMakeCommand::class,
+                ActionMakeCommand::class,
+                ServiceContractMakeCommand::class,
+            ]);
+        }
+
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);

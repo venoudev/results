@@ -203,6 +203,121 @@ in your bootstrap/app.php file, configure
 
    
   ```
+
+## Commands 
+
+    1. Generate a Skeleton Validator
+    ```
+    php artisan make:validator Example
+    ```
+
+    ```
+        <?php
+
+        namespace App\Validators;
+
+        use Venoudev\Results\Contracts\Result;
+        use Illuminate\Support\Facades\Validator;
+        use Venoudev\Results\Exceptions\CheckDataException;
+
+        class ExampleValidator
+        {
+
+            public static function execute($data){
+
+                $validator=Validator::make($data,[
+                    
+
+                ]);
+
+                if ($validator->fails()) {
+                    $exception = new CheckDataException();
+                    $exception->addFieldErrors($validator->errors());
+                    throw $exception;
+                }
+            }
+        }
+    ```
+
+    2. Generate a Skeleton ActionClass
+
+    ```
+    php artisan make:action Example
+    ```
+
+    ```
+        <?php
+
+        namespace App\Actions;
+
+        class ExampleAction
+        {
+
+            public static function execute($data){
+
+                $validator=Validator::make($data,[
+                    
+
+                ]);
+
+                if ($validator->fails()) {
+                    $exception = new CheckDataException();
+                    $exception->addFieldErrors($validator->errors());
+                    throw $exception;
+                }
+            }
+        }
+    ```
+
+    3. Generate two Skeleton, the first an Contract and second an implementation class from these contract 
+
+    ```
+    php artisan make:service Example
+    ``` 
+    ### Contract
+
+    ```
+        <?php
+
+        namespace App\Services\Contracts;
+
+        interface ExampleService {
+
+
+        }
+    ```
+
+    ### Implementation 
+
+    ``` 
+        <?php
+
+        namespace App\Services;
+
+        use App\Services\Contracts\ExampleService;
+        use Illuminate\Http\Request;
+
+        class ExampleServiceImpl implements ExampleService{
+
+            
+
+        }
+    ```
+
+    in the method boot of your ServiceProvider or custom provider bind contract to implementation and use your contract in the controllers for example throught dependency inyection
+
+    ``` 
+        use App\Services\ExampleServiceImpl;
+        use App\Services\Contracts\ExampleService;
+
+        ...
+
+        public function boot()
+        {
+            $this->app->bind(ExampleService::class,ExampleImpl::class);
+        }
+
+    ```
   
 ## Json response structure of Venoudev/Results
 

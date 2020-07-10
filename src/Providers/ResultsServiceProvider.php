@@ -14,7 +14,11 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
-use Venoudev\Results\Commands\InstallResources;
+use Venoudev\Results\Commands\InstallResourcesCommand;
+use Venoudev\Results\Commands\ValidatorMakeCommand;
+use Venoudev\Results\Commands\ServiceImplMakeCommand;
+use Venoudev\Results\Commands\ServiceContractMakeCommand;
+use Venoudev\Results\Commands\ActionMakeCommand;
 use App;
 
 class ResultsServiceProvider extends ServiceProvider
@@ -50,9 +54,14 @@ class ResultsServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                InstallResources::class,
+                InstallResourcesCommand::class,
+                ValidatorMakeCommand::class,
+                ServiceImplMakeCommand::class,
+                ActionMakeCommand::class,
+                ServiceContractMakeCommand::class,
             ]);
         }
+        
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);
