@@ -206,118 +206,118 @@ in your bootstrap/app.php file, configure
 
 ## Commands 
 
-    1. Generate a Skeleton Validator
-    ```
+  1. Generate a Skeleton Validator
+
+  ```
     php artisan make:validator Example
-    ```
+  ```
+  
+  generate => 
+  
+  
+  ```
+      <?php
 
-    ```
-        <?php
+      namespace App\Validators;
 
-        namespace App\Validators;
+      use Illuminate\Support\Facades\Validator;
+      use Venoudev\Results\Exceptions\CheckDataException;
 
-        use Venoudev\Results\Contracts\Result;
-        use Illuminate\Support\Facades\Validator;
-        use Venoudev\Results\Exceptions\CheckDataException;
+      class ExampleValidator
+      {
 
-        class ExampleValidator
-        {
+          public static function execute($data){
 
-            public static function execute($data){
+              $validator=Validator::make($data,[
+                   // Your awesome laravel validations here
+              ]);
 
-                $validator=Validator::make($data,[
-                    
+              if ($validator->fails()) {
+                  $exception = new CheckDataException();
+                  $exception->addFieldErrors($validator->errors());
+                  throw $exception;
+              }
+              return;
+          }
+      }
+  ```
 
-                ]);
+  2. Generate a Skeleton ActionClass
 
-                if ($validator->fails()) {
-                    $exception = new CheckDataException();
-                    $exception->addFieldErrors($validator->errors());
-                    throw $exception;
-                }
-            }
-        }
-    ```
-
-    2. Generate a Skeleton ActionClass
-
-    ```
+  ```
     php artisan make:action Example
-    ```
+  ```
+    
+  generate => 
+  
+  ```
+      <?php
 
-    ```
-        <?php
+      namespace App\Actions;
 
-        namespace App\Actions;
+      class ExampleAction
+      {
 
-        class ExampleAction
-        {
+          public static function execute($data){
+            // Your awesome code here.
+            return;
+          }
+      }
+  ```
 
-            public static function execute($data){
+  3. Generate two Skeleton, the first an Contract and second an implementation class from these contract 
 
-                $validator=Validator::make($data,[
-                    
-
-                ]);
-
-                if ($validator->fails()) {
-                    $exception = new CheckDataException();
-                    $exception->addFieldErrors($validator->errors());
-                    throw $exception;
-                }
-            }
-        }
-    ```
-
-    3. Generate two Skeleton, the first an Contract and second an implementation class from these contract 
-
-    ```
+  ```
     php artisan make:service Example
-    ``` 
-    ### Contract
+  ``` 
+  
+  generate => 
+  
+  ### Contract
 
-    ```
-        <?php
+  ```
+      <?php
 
-        namespace App\Services\Contracts;
+      namespace App\Services\Contracts;
 
-        interface ExampleService {
+      interface ExampleService {
+           // Your awesome methods to implement here.
+      }
+  ```
 
+  ### Implementation 
 
-        }
-    ```
+  ``` 
+      <?php
 
-    ### Implementation 
+      namespace App\Services;
 
-    ``` 
-        <?php
+      use App\Services\Contracts\ExampleService;
+      use Illuminate\Http\Request;
 
-        namespace App\Services;
+      class ExampleServiceImpl implements ExampleService{
 
-        use App\Services\Contracts\ExampleService;
-        use Illuminate\Http\Request;
+          // Your awesome implemented methods here.
 
-        class ExampleServiceImpl implements ExampleService{
+      }
+  ```
 
-            
+  in the method boot of your ServiceProvider or custom provider bind contract to implementation and use your contract in the controllers for example throught dependency inyection
+  
+  app\Providers\AppServiceProvider.php
 
-        }
-    ```
+  ``` 
+      use App\Services\ExampleServiceImpl;
+      use App\Services\Contracts\ExampleService;
 
-    in the method boot of your ServiceProvider or custom provider bind contract to implementation and use your contract in the controllers for example throught dependency inyection
+      ...
 
-    ``` 
-        use App\Services\ExampleServiceImpl;
-        use App\Services\Contracts\ExampleService;
+      public function boot()
+      {
+          $this->app->bind(ExampleService::class,ExampleImpl::class);
+      }
 
-        ...
-
-        public function boot()
-        {
-            $this->app->bind(ExampleService::class,ExampleImpl::class);
-        }
-
-    ```
+  ```
   
 ## Json response structure of Venoudev/Results
 
