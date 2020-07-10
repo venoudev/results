@@ -179,14 +179,20 @@ in your bootstrap/app.php file, configure
       ];
 
   ```
-  #### Laravel and Lumen 
+  ### Laravel and Lumen 
   later define in your .env file 
   
   ```
     APP_LOCALE=en_results_venoudev
   ```
   
-### Configure Facade ResultManager in Laravel if you have problems with ResultManager not found
+  and execute on your console 
+  
+  ```
+    php artisan config:clear
+  ```
+  
+#### Configure Facade ResultManager in Laravel if you have problems with ResultManager not found
 
   in your app/config/app.php add this code in aliases array:
   
