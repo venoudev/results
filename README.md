@@ -230,8 +230,7 @@ in your bootstrap/app.php file, configure
           public static function execute($data){
 
               $validator=Validator::make($data,[
-
-
+                   // Your awesome laravel validations here
               ]);
 
               if ($validator->fails()) {
@@ -239,6 +238,7 @@ in your bootstrap/app.php file, configure
                   $exception->addFieldErrors($validator->errors());
                   throw $exception;
               }
+              return;
           }
       }
   ```
@@ -260,17 +260,8 @@ in your bootstrap/app.php file, configure
       {
 
           public static function execute($data){
-
-              $validator=Validator::make($data,[
-
-
-              ]);
-
-              if ($validator->fails()) {
-                  $exception = new CheckDataException();
-                  $exception->addFieldErrors($validator->errors());
-                  throw $exception;
-              }
+            // Your awesome code here.
+            return;
           }
       }
   ```
@@ -291,8 +282,7 @@ in your bootstrap/app.php file, configure
       namespace App\Services\Contracts;
 
       interface ExampleService {
-
-
+           // Your awesome methods to implement here.
       }
   ```
 
@@ -308,7 +298,7 @@ in your bootstrap/app.php file, configure
 
       class ExampleServiceImpl implements ExampleService{
 
-
+          // Your awesome implemented methods here.
 
       }
   ```
