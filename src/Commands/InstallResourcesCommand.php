@@ -17,7 +17,7 @@ class InstallResourcesCommand extends Command
         $this->info('');
         $this->info('Installing....');
         Artisan::call('vendor:publish' , [
-            '--provider' => 'Venoudev\Results\ResultsServiceProvider'
+            '--provider' => 'Venoudev\Results\Providers\ResultsServiceProvider'
         ]);
 
         $this->info('');
