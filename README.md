@@ -35,7 +35,28 @@ in your bootstrap/app.php file, configure
   ```
     php artisan vendor:publish --tag=results-resources
   ```
-  #### Lumen 
+  
+  ### Laravel 
+  
+  update your config/app.php file whit this.
+  
+  ```
+    ...
+    /*
+      |--------------------------------------------------------------------------
+      | Application Locale Configuration
+      |--------------------------------------------------------------------------
+      |
+      | The application locale determines the default locale that will be used
+      | by the translation service provider. You are free to set this value
+      | to any of the locales which will be supported by the application.
+      |
+      */
+    'locale' => env('APP_LOCALE', 'en'),
+    ...
+  ```
+  
+  ### Lumen 
   
   ```
     mkdir resources/lang
