@@ -42,6 +42,16 @@ class ServiceContractMakeCommand extends GeneratorCommand
     }
 
     /**
+    * Get the desired class name from the input.
+    *
+    * @return string
+    */
+    protected function getNameInput()
+    {   
+        return trim($this->argument('name').'Service');
+    }
+
+    /**
      * Get the stub file for the generator.
      *
      * @return string

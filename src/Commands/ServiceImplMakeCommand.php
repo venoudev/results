@@ -93,7 +93,7 @@ class ServiceImplMakeCommand extends GeneratorCommand
     */
     protected function getNameInput()
     {   
-        return trim($this->argument('name').'Impl');
+        return trim($this->argument('name').'ServiceImpl');
     }
 
     /**
