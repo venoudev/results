@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Facades\Validator;
+use Venoudev\Results\Exceptions\CheckDataException;
+
+class {{ class }}
+{
+    public static function execute($data){
+
+        $validator = Validator::make($data, [
+            
+        ]);
+
+        if ($validator->fails()) {
+            $exception = new CheckDataException();
+            $exception->addFieldErrors($validator->errors());
+            throw $exception;
+        }
+        return;
+
+    }
+}
