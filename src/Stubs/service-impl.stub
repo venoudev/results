@@ -1,0 +1,12 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use {{ namespace }}\Contracts\{{ interface }};
+
+class {{ class }} implements {{ interface }}{
+
+    
+
+}

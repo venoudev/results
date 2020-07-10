@@ -6,18 +6,18 @@ use Venoudev\Results\Contracts\Message;
 
 class MessageImpl implements Message
 {
-  protected $messageCode;
+  protected $message_code;
   protected $message;
 
-  public function __construct($messageCode, $message){
+  public function __construct($message_code, $message){
 
-    $this->messageCode = strtoupper($messageCode);
+    $this->message_code = strtoupper($message_code);
     $this->message = $message;
 
   }
 
   public function getCodeMessage():string{
-    return $this->messageCode;
+    return $this->message_code;
   }
 
   public function getMessage():string{

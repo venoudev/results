@@ -1,6 +1,6 @@
 <?php
 
-namespace Venoudev\Results;
+namespace Venoudev\Results\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
@@ -14,9 +14,15 @@ use Venoudev\Results\Contracts\Message;
 use Venoudev\Results\MessageImpl;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\ResultManagerImpl;
+
+use Venoudev\Results\Commands\ValidatorMakeCommand;
+use Venoudev\Results\Commands\ServiceImplMakeCommand;
+use Venoudev\Results\Commands\ServiceContractMakeCommand;
+use Venoudev\Results\Commands\ActionMakeCommand;
+
 use App;
 
-class ResultsServiceProvider extends ServiceProvider
+class LumenResultsServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -28,7 +34,6 @@ class ResultsServiceProvider extends ServiceProvider
 
         App::bind('resultManager', function()
         {   
-            //return App::make('Venoudev\Results\Contracts\ResultManager');
             return App::make(ResultManager::class);
 
         });
@@ -43,22 +48,21 @@ class ResultsServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('/lang'),
-        ],'results-resources');
+    {   
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Commands\InstallResources::class,
+                ValidatorMakeCommand::class,
+                ServiceImplMakeCommand::class,
+                ActionMakeCommand::class,
+                ServiceContractMakeCommand::class,
             ]);
         }
+
         $this->app->singleton(ResultManager::class, ResultManagerImpl::class);
         $this->app->bind(Result::class, ResultImpl::class);
         $this->app->bind(Message::class, MessageImpl::class);
         $this->app->bind(Error::class, ErrorImpl::class);
-
-      
     }
 
     public function registerCollectionPaginated(){
