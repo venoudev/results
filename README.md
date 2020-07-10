@@ -220,7 +220,6 @@ in your bootstrap/app.php file, configure
 
       namespace App\Validators;
 
-      use Venoudev\Results\Contracts\Result;
       use Illuminate\Support\Facades\Validator;
       use Venoudev\Results\Exceptions\CheckDataException;
 
