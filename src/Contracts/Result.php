@@ -115,6 +115,14 @@ interface Result {
      * @return void
      */
     public function addFieldError($field_error):void;
+
+    /**
+     * @param string $error_code
+     * @param string $field
+     * @param string $message
+     * @return void
+     */
+    public function addCustomFieldError(string $error_code, string $field, string $message):void;
     
     /**
      *
