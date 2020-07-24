@@ -35,7 +35,28 @@ in your bootstrap/app.php file, configure
   ```
     php artisan vendor:publish --tag=results-resources
   ```
-  #### Lumen 
+  
+  ### Laravel 
+  
+  update your config/app.php file whit this.
+  
+  ```
+    ...
+    /*
+      |--------------------------------------------------------------------------
+      | Application Locale Configuration
+      |--------------------------------------------------------------------------
+      |
+      | The application locale determines the default locale that will be used
+      | by the translation service provider. You are free to set this value
+      | to any of the locales which will be supported by the application.
+      |
+      */
+    'locale' => env('APP_LOCALE', 'en'),
+    ...
+  ```
+  
+  ### Lumen 
   
   ```
     mkdir resources/lang
@@ -158,14 +179,20 @@ in your bootstrap/app.php file, configure
       ];
 
   ```
-  #### Laravel and Lumen 
+  ### Laravel and Lumen 
   later define in your .env file 
   
   ```
     APP_LOCALE=en_results_venoudev
   ```
   
-### Configure Facade ResultManager in Laravel if you have problems with ResultManager not found
+  and execute on your console 
+  
+  ```
+    php artisan config:clear
+  ```
+  
+#### Configure Facade ResultManager in Laravel if you have problems with ResultManager not found
 
   in your app/config/app.php add this code in aliases array:
   
