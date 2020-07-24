@@ -97,10 +97,7 @@ class ResultImpl implements Result
         $this->data = [];
     }
  
-    public function addFieldError($field_error):void{
-        $error = new Error($field_error);
-        array_push($this->errors, $error);
-    }
+    
 
     public function addError($error_code, $message):void{
         $error = new Error($error_code, $message);
@@ -123,6 +120,16 @@ class ResultImpl implements Result
         foreach ($field_errors->all() as $field_error) {
             $this->addFieldError($field_error);
         }
+    }
+
+    public function addFieldError($field_error):void{
+        $error = new Error($field_error);
+        array_push($this->errors, $error);
+    }
+
+    public function addCustomFieldError($error_code, $field, $message):void{
+        $error = new Error($error_code, $field, $message);
+        array_push($this->errors, $error);
     }
 
     public function addErrors(array $errors):void{
