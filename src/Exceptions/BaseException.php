@@ -45,6 +45,10 @@ class BaseException extends \Exception{
         $this->result->addCustomFieldError($error_code,  $field, $message);
     }
 
+    public function getResult(){
+        return $this->result;
+    }
+
     /**
      *
      * @return void
