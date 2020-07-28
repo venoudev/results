@@ -29,18 +29,23 @@ class ServiceImplMakeCommand extends GeneratorCommand
      */
     protected $type = 'Service Implementation';
 
+    protected $path_interface;
+
     /**
      * Execute the console command.
      *
      * @return void
      */
     public function handle()
-    {
+    {   
+        // if ($this->option('contract')) {
+        //     $this->createContract();
+        // }
+
         if (parent::handle() === false && ! $this->option('force')) {
             return false;
         }
-
-        $this->createContract();
+       
     }
 
      /**
@@ -48,14 +53,24 @@ class ServiceImplMakeCommand extends GeneratorCommand
      *
      * @return void
      */
-     protected function createContract()
-     {
-         $contract = Str::studly(class_basename($this->argument('name')));
- 
-         $this->call('make:contract', [
-             'name' => "{$contract}",
-         ]);
-     }
+    //  protected function createContract()
+    //  {
+    //     $contract = Str::studly(class_basename($this->argument('name')));
+        
+    //     $name = trim($this->argument('name'));
+    //     $contract = Str::studly(class_basename($this->argument('name')));
+    //     $path_interface = Str::beforelast($name, '/');
+        
+    //     $this->call('make:contract', [
+    //         'name' => "{$contract}",
+    //         'path_interface' => "{$path_interface}",
+    //         '--service'
+    //     ]);
+
+    //     $namespace = Str::beforeLast($this->getNamespace($name), '\\');
+    //     $this->path_interface = Str::of($this->getNamespace($name))->replace($namespace, $namespace.'\Contracts');
+      
+    //  }
 
     /**
      * Get the stub file for the generator.
@@ -80,7 +95,9 @@ class ServiceImplMakeCommand extends GeneratorCommand
         $replace = [
             '{{ class }}' => $name,
             '{{ interface }}' => $slice,
+            //'{{ path_interface }}' => $this->path_interface,
         ];
+       
         return str_replace(
             array_keys($replace), array_values($replace), parent::buildClass($name)
         );
@@ -129,7 +146,8 @@ class ServiceImplMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
+            ['contract', 'c', InputOption::VALUE_NONE, 'Create a new contract for the service'],
+            ['force', 'f', InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
         ];
     }
 }

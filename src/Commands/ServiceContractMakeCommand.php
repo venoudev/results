@@ -5,6 +5,7 @@ namespace Venoudev\Results\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class ServiceContractMakeCommand extends GeneratorCommand
 {
@@ -14,13 +15,13 @@ class ServiceContractMakeCommand extends GeneratorCommand
      * @var string
      */
     protected $name = 'make:contract';
-
+    
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Contract interfaz';
+    protected $description = 'Create a new Contract interface';
 
     /**
      * The type of class being generated.
@@ -34,11 +35,17 @@ class ServiceContractMakeCommand extends GeneratorCommand
      *
      * @return void
      */
+
+    protected $route_contracts = '\Services\Contracts';
+
     public function handle()
     {
         if (parent::handle() === false && ! $this->option('force')) {
             return false;
         }
+        // if ($this->option('service')) {
+        //     $this->route_contracts.'\\'.trim($this->argument('path_interface'));
+        // }
     }
 
     /**
@@ -82,7 +89,7 @@ class ServiceContractMakeCommand extends GeneratorCommand
      */
      protected function getDefaultNamespace($rootNamespace)
      {
-         return $rootNamespace.'\Services\Contracts';
+         return $rootNamespace.$this->route_contracts;
      }
     /**
      * Get the console command options.
@@ -92,7 +99,22 @@ class ServiceContractMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['force', null, InputOption::VALUE_NONE, 'Create the contract even if the model already exists'],
+            ['force', 'f', InputOption::VALUE_NONE, 'Create the contract even if the model already exists'],
+            ['service', 's', InputOption::VALUE_NONE, 'Create the contract even if the model already exists'],
         ];
+    }
+
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {   
+        return [
+            ['name', InputArgument::REQUIRED, 'The name of the class'],
+            ['path_interface', InputArgument::OPTIONAL, 'The path of custom interface'],
+        ];
+       
     }
 }
