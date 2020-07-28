@@ -38,9 +38,6 @@ class ServiceImplMakeCommand extends GeneratorCommand
      */
     public function handle()
     {   
-        // if ($this->option('contract')) {
-        //     $this->createContract();
-        // }
 
         if (parent::handle() === false && ! $this->option('force')) {
             return false;
@@ -48,29 +45,6 @@ class ServiceImplMakeCommand extends GeneratorCommand
        
     }
 
-     /**
-     * Create a model factory for the model.
-     *
-     * @return void
-     */
-    //  protected function createContract()
-    //  {
-    //     $contract = Str::studly(class_basename($this->argument('name')));
-        
-    //     $name = trim($this->argument('name'));
-    //     $contract = Str::studly(class_basename($this->argument('name')));
-    //     $path_interface = Str::beforelast($name, '/');
-        
-    //     $this->call('make:contract', [
-    //         'name' => "{$contract}",
-    //         'path_interface' => "{$path_interface}",
-    //         '--service'
-    //     ]);
-
-    //     $namespace = Str::beforeLast($this->getNamespace($name), '\\');
-    //     $this->path_interface = Str::of($this->getNamespace($name))->replace($namespace, $namespace.'\Contracts');
-      
-    //  }
 
     /**
      * Get the stub file for the generator.

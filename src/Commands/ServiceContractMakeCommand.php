@@ -43,9 +43,6 @@ class ServiceContractMakeCommand extends GeneratorCommand
         if (parent::handle() === false && ! $this->option('force')) {
             return false;
         }
-        // if ($this->option('service')) {
-        //     $this->route_contracts.'\\'.trim($this->argument('path_interface'));
-        // }
     }
 
     /**
