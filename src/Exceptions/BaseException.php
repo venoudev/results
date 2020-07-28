@@ -27,12 +27,12 @@ class BaseException extends \Exception{
 
     /**
      *
-     * @param string $message_code
+     * @param string $error_code
      * @param string $message
      * @return void
      */
-    public function addError(string $message_code, string $message):void{
-        $this->result->addMessage($message_code, $message);
+    public function addError(string $error_code, string $message):void{
+        $this->result->addError($error_code, $message);
     }
 
     /**
