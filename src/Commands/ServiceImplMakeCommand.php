@@ -29,7 +29,6 @@ class ServiceImplMakeCommand extends GeneratorCommand
      */
     protected $type = 'Service Implementation';
 
-    protected $path_interface;
 
     /**
      * Execute the console command.
@@ -66,17 +65,39 @@ class ServiceImplMakeCommand extends GeneratorCommand
     {  
         $interfaz_name = class_basename($name);
         $slice = Str::before($interfaz_name, 'Impl');
+        $path_interface = Str::beforeLast(Str::beforelast($name, 'Services').'Services\Contracts'.Str::afterlast($name, 'Services'),'\\');
         $replace = [
             '{{ class }}' => $name,
             '{{ interface }}' => $slice,
-            //'{{ path_interface }}' => $this->path_interface,
+            '{{ path_interface }}' => $path_interface,
         ];
-       
         return str_replace(
             array_keys($replace), array_values($replace), parent::buildClass($name)
         );
     }
 
+    /**
+     * Parse the class name and format according to the root namespace.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function qualifyClass($name)
+    {
+        $name = ltrim($name, '\\/');
+
+        $rootNamespace = $this->rootNamespace();
+
+        if (Str::startsWith($name, $rootNamespace)) {
+            return $name;
+        }
+
+        $name = str_replace('/', '\\', $name);
+        
+        return $this->qualifyClass(
+            $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.$name
+        );
+    }
     /**
     * Get the desired class name from the input.
     *

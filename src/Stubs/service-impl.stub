@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Http\Request;
-use {{ namespace }}\Contracts\{{ interface }};
+use {{ path_interface }}\{{ interface }};
 
 class {{ class }} implements {{ interface }}{
 
