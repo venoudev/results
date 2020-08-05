@@ -19,8 +19,7 @@ use Venoudev\Results\Commands\ValidatorMakeCommand;
 use Venoudev\Results\Commands\ServiceImplMakeCommand;
 use Venoudev\Results\Commands\ServiceContractMakeCommand;
 use Venoudev\Results\Commands\ActionMakeCommand;
-
-use App;
+use Illuminate\Support\Facades\App;
 
 class LumenResultsServiceProvider extends ServiceProvider
 {
