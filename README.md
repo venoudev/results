@@ -230,8 +230,25 @@ in your bootstrap/app.php file, configure
 
    
   ```
+## Using Results with Lumen and Swoole
 
-## Commands 
+  In config/swoole_http.php register the lumen service provider for every request. This is necessary for that lumen can find the Facade ResultManager when uses swoole server.
+  
+    ```
+      /*
+    |--------------------------------------------------------------------------
+    | Providers here will be registered on every request.
+    |--------------------------------------------------------------------------
+    */
+    'providers' => [
+        Illuminate\Pagination\PaginationServiceProvider::class,
+        Venoudev\Results\Providers\LumenResultsServiceProvider::class,
+    ],
+    
+    ```
+
+
+## Commands for create components 
 
   1. Generate a Skeleton Validator
 
