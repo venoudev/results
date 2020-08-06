@@ -2,8 +2,7 @@
 
 namespace Venoudev\Results;
 
-use App;
-
+use Illuminate\Support\Facades\App;
 use Venoudev\Results\Contracts\ResultManager;
 use Venoudev\Results\Contracts\Result;
 
