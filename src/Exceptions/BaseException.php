@@ -27,6 +27,33 @@ class BaseException extends \Exception{
 
     /**
      *
+     * @param string $error_code
+     * @param string $message
+     * @return void
+     */
+    public function addError(string $error_code, string $message):void{
+        $this->result->addError($error_code, $message);
+    }
+
+    /**
+     * @param string $error_code
+     * @param string $field
+     * @param string $message
+     * @return void
+     */
+    public function addCustomFieldError(string $error_code='', string $field='', string $message=''):void{
+        $this->result->addCustomFieldError($error_code,  $field, $message);
+    }
+
+    /**
+     * @return Result
+     */
+    public function getResult():Result{
+        return $this->result;
+    }
+
+    /**
+     *
      * @return void
      */
     public function clearMessages():void{

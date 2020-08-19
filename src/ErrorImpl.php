@@ -30,10 +30,16 @@ class ErrorImpl implements Error
 
   public function __construct2($error_code, $message)
   {
-      $this->error_code = strtoupper($error_code);
-      $this->error_code = $this->strSpaceReplace($this->error_code);
+      $this->error_code = $this->strSpaceReplace(strtoupper($error_code));
       $this->message=$message;
       $this->field='NOTHING';
+  }
+
+  public function __construct3($error_code, $field, $message)
+  {
+      $this->error_code = $this->strSpaceReplace(strtoupper($error_code));
+      $this->message = $message;
+      $this->field = $field;
   }
 
   public function divide($data){

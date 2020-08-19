@@ -19,7 +19,7 @@ use Venoudev\Results\Commands\ValidatorMakeCommand;
 use Venoudev\Results\Commands\ServiceImplMakeCommand;
 use Venoudev\Results\Commands\ServiceContractMakeCommand;
 use Venoudev\Results\Commands\ActionMakeCommand;
-use App;
+use Illuminate\Support\Facades\App;
 
 class ResultsServiceProvider extends ServiceProvider
 {
@@ -49,7 +49,7 @@ class ResultsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('/lang'),
+            __DIR__.'/../../resources/lang' => resource_path('/lang'),
         ],'results-resources');
 
         if ($this->app->runningInConsole()) {

@@ -15,6 +15,6 @@ class NotFoundException extends BaseException{
         $this->result->fail();
         $this->result->setCode($code);
         $this->result->setDescription('Exist conflict with the request, please check the errors or messages.');
-        $this->addMessage('NOT_FOUND', 'Resource not found check your request data');
+        $this->addMessage('NOT_FOUND', 'Resource not found check your request data.');
     }    
 }

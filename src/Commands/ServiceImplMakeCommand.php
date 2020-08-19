@@ -29,33 +29,21 @@ class ServiceImplMakeCommand extends GeneratorCommand
      */
     protected $type = 'Service Implementation';
 
+
     /**
      * Execute the console command.
      *
      * @return void
      */
     public function handle()
-    {
+    {   
+
         if (parent::handle() === false && ! $this->option('force')) {
             return false;
         }
-
-        $this->createContract();
+       
     }
 
-     /**
-     * Create a model factory for the model.
-     *
-     * @return void
-     */
-     protected function createContract()
-     {
-         $contract = Str::studly(class_basename($this->argument('name')));
- 
-         $this->call('make:contract', [
-             'name' => "{$contract}",
-         ]);
-     }
 
     /**
      * Get the stub file for the generator.
@@ -77,15 +65,39 @@ class ServiceImplMakeCommand extends GeneratorCommand
     {  
         $interfaz_name = class_basename($name);
         $slice = Str::before($interfaz_name, 'Impl');
+        $path_interface = Str::beforeLast(Str::beforelast($name, 'Services').'Services\Contracts'.Str::afterlast($name, 'Services'),'\\');
         $replace = [
             '{{ class }}' => $name,
             '{{ interface }}' => $slice,
+            '{{ path_interface }}' => $path_interface,
         ];
         return str_replace(
             array_keys($replace), array_values($replace), parent::buildClass($name)
         );
     }
 
+    /**
+     * Parse the class name and format according to the root namespace.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function qualifyClass($name)
+    {
+        $name = ltrim($name, '\\/');
+
+        $rootNamespace = $this->rootNamespace();
+
+        if (Str::startsWith($name, $rootNamespace)) {
+            return $name;
+        }
+
+        $name = str_replace('/', '\\', $name);
+        
+        return $this->qualifyClass(
+            $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.$name
+        );
+    }
     /**
     * Get the desired class name from the input.
     *
@@ -129,7 +141,8 @@ class ServiceImplMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
+            ['contract', 'c', InputOption::VALUE_NONE, 'Create a new contract for the service'],
+            ['force', 'f', InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
         ];
     }
 }
