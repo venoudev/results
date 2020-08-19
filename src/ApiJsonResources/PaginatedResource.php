@@ -22,7 +22,7 @@ class PaginatedResource extends Resource
 
     public function toArray($request)
     {
-        $array = $this->resource;
+        $array = $this->resource->response()->getData(true);
         $array[$this->namePagination]=$array['data'];
         $this->array_unshift_assoc($array,$this->namePagination,$array[$this->namePagination]);
         unset($array['data']);
