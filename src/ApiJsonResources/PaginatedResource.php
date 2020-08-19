@@ -6,14 +6,14 @@ use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
 class PaginatedResource extends Resource
 {
-   protected $namePagination='paginated';
+   protected $namePagination;
    /**
     * Transform the resource into an array.
     *
     * @param  \Illuminate\Http\Request  $request
     * @return array
     */
-    public function __construct($resource, $namePagination)
+    public function __construct($resource, $namePagination = 'paginated')
      {
          parent::__construct($resource);
          $this->resource = $resource;
