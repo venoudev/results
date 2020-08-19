@@ -2,13 +2,6 @@
 
 namespace Venoudev\Results\Facades;
 
-/**
- * @method static mixed sear(string $key, \Closure $callback)
- *
- * @see  Venoudev\Results\Contracts\ResultManager
- */
-
-
 use Illuminate\Support\Facades\Facade;
 
 class ResultManagerFacade extends Facade{
