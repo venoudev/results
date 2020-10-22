@@ -2,18 +2,18 @@
 
 namespace Venoudev\Results\ApiJsonResources;
 
-use Illuminate\Http\Resources\Json\JsonResource as Resource;
+use Illuminate\Http\Resources\Json\ResourceCollection as Resource; 
 
 class PaginatedResource extends Resource
 {
-   protected $namePagination='paginated';
-   /**
-    * Transform the resource into an array.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return array
-    */
-    public function __construct($resource, $namePagination)
+    protected $namePagination;
+
+    /**
+     * PaginatedResource constructor.
+     * @param $resource
+     * @param string $namePagination
+     */
+    public function __construct($resource, $namePagination = 'paginated')
      {
          parent::__construct($resource);
          $this->resource = $resource;
@@ -22,11 +22,11 @@ class PaginatedResource extends Resource
 
     public function toArray($request)
     {
-      $array=parent::toArray($request);
-      $array[$this->namePagination]=$array['data'];
-      $this->array_unshift_assoc($array,$this->namePagination,$array[$this->namePagination]);
-      unset($array['data']);
-      return $array;
+        $array = $this->resource->response()->getData(true);
+        $array[$this->namePagination]=$array['data'];
+        $this->array_unshift_assoc($array,$this->namePagination,$array[$this->namePagination]);
+        unset($array['data']);
+        return $array;
     }
 
     function array_unshift_assoc(&$arr, $key, $val)
