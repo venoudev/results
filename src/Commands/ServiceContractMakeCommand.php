@@ -36,7 +36,7 @@ class ServiceContractMakeCommand extends GeneratorCommand
      * @return void
      */
 
-    protected $route_contracts = '\Contracts';
+    protected string $contracts_route = '\Contracts';
 
     public function handle()
     {
@@ -52,7 +52,7 @@ class ServiceContractMakeCommand extends GeneratorCommand
     */
     protected function getNameInput()
     {   
-        return trim($this->argument('name').'Service');
+        return trim($this->argument('name'));
     }
 
     /**
@@ -86,7 +86,7 @@ class ServiceContractMakeCommand extends GeneratorCommand
      */
      protected function getDefaultNamespace($rootNamespace)
      {
-         return $rootNamespace.$this->route_contracts;
+         return $rootNamespace.$this->contracts_route;
      }
     /**
      * Get the console command options.

@@ -49,7 +49,7 @@ class ResultsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../lang' => resource_path('/lang'),
+            __DIR__.'/../../resources/lang' => lang_path('/'),
         ],'results-resources');
 
         if ($this->app->runningInConsole()) {

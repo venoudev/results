@@ -65,7 +65,7 @@ class ServiceImplMakeCommand extends GeneratorCommand
     {  
         $interfaz_name = class_basename($name);
         $slice = Str::before($interfaz_name, 'Impl');
-        $path_interface = Str::beforeLast(Str::beforelast($name, 'Services').'Services\Contracts'.Str::afterlast($name, 'Services'),'\\');
+        $path_interface = Str::beforeLast(Str::beforelast($name, 'Services').'Contracts'.Str::afterlast($name, 'Services'),'\\');
         $replace = [
             '{{ class }}' => $name,
             '{{ interface }}' => $slice,
@@ -105,7 +105,7 @@ class ServiceImplMakeCommand extends GeneratorCommand
     */
     protected function getNameInput()
     {   
-        return trim($this->argument('name').'ServiceImpl');
+        return trim($this->argument('name').'Impl');
     }
 
     /**

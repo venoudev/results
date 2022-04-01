@@ -45,7 +45,7 @@ class ValidatorMakeCommand extends GeneratorCommand
 
     protected function getNameInput()
     {   
-        return trim($this->argument('name').'Validator');
+        return trim($this->argument('name'));
     }
 
     /**

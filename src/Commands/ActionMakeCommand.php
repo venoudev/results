@@ -59,7 +59,7 @@ class ActionMakeCommand extends GeneratorCommand
     */
     protected function getNameInput()
     {   
-        return trim($this->argument('name').'Action');
+        return trim($this->argument('name'));
     }
     /**
      * Resolve the fully-qualified path to the stub.
