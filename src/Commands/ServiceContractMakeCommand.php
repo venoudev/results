@@ -36,7 +36,7 @@ class ServiceContractMakeCommand extends GeneratorCommand
      * @return void
      */
 
-    protected $route_contracts = '\Services\Contracts';
+    protected $route_contracts = '\Contracts';
 
     public function handle()
     {
